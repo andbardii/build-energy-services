@@ -60,7 +60,7 @@ public class ProvinciaService {
 	
 		public void caricaProvince() {
 			try {
-				CSVReader provinceReader = new CSVReader(new FileReader("src\\main\\resources\\province-italiane.csv"));
+				CSVReader provinceReader = new CSVReader(new FileReader("src/main/resources/province-italiane.csv"));
 				System.out.println(provinceReader);
 				String[] provinceLine;
 		        try {

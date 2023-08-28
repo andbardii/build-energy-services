@@ -61,7 +61,7 @@ public class ComuneService {
 	
 	public void caricaComuni() {
 		try {
-			CSVReader comuniReader = new CSVReader(new FileReader("src\\main\\resources\\comuni-italiani.csv"));
+			CSVReader comuniReader = new CSVReader(new FileReader("src/main/resources/comuni-italiani.csv"));
 			System.out.println(comuniReader);
 			String[] comuniLine;
 	        try {
