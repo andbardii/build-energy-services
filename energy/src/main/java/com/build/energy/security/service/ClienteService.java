@@ -21,6 +21,8 @@ public class ClienteService {
 	
 	@Autowired ClienteRepository repo;
 	
+	@Autowired IndirizzoService indirizzoSvc;
+	
 	@Autowired @Qualifier("cliente") private ObjectProvider<Cliente> provider;
 	
 	// SAVE METHODS
@@ -35,8 +37,8 @@ public class ClienteService {
 							  String cognomeContatto,
 							  Integer telefonoContatto,
 							  TipoCliente tipoCliente,
-							  Indirizzo sedeLegale,
-							  Indirizzo sedeOperativa) {
+							  Long idSedeLegale,
+							  Long idSedeOperativa) {
 		
 			Cliente c = provider.getObject().builder()
 						.ragioneSociale(ragioneSociale)
@@ -50,8 +52,8 @@ public class ClienteService {
 						.cognomeContatto(cognomeContatto)
 						.telefonoContatto(telefonoContatto)
 						.tipoCliente(tipoCliente)
-						.sedeLegale(sedeLegale)
-						.sedeOperativa(sedeOperativa)
+						.sedeLegale(indirizzoSvc.findById(idSedeLegale))
+						.sedeOperativa(indirizzoSvc.findById(idSedeOperativa))
 						.build();
 				repo.save(c);
 				System.out.println();

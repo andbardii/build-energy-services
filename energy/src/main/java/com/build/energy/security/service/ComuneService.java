@@ -1,5 +1,9 @@
 package com.build.energy.security.service;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -12,6 +16,8 @@ import org.springframework.stereotype.Service;
 import com.build.energy.security.entity.Comune;
 import com.build.energy.security.entity.Provincia;
 import com.build.energy.security.repository.ComuneRepository;
+import com.opencsv.CSVReader;
+import com.opencsv.exceptions.CsvValidationException;
 
 @Service
 public class ComuneService {
@@ -20,15 +26,17 @@ public class ComuneService {
 	
 	@Autowired ComuneRepository repo;
 	
+	@Autowired ProvinciaService provinciaSvc;
+	
 	@Autowired @Qualifier("comune") private ObjectProvider<Comune> provider;
 	
 	// SAVE METHODS
 	public Comune addComune(String nome,
-							 Provincia provincia) {
+							Long idProvincia) {
 		
 		Comune c = provider.getObject().builder()
 						.nome(nome)
-						.provincia(provincia)
+						.provincia(provinciaSvc.findById(idProvincia))
 						.build();
 				repo.save(c);
 				System.out.println();
@@ -47,6 +55,32 @@ public class ComuneService {
 		List<Comune> l = (List<Comune>)repo.findAll();
 		l.forEach(c -> log.info(c.toString()));
 		return l;
+	}
+	
+	// OTHER METHODS
+	
+	public void caricaComuni() {
+		try {
+			CSVReader comuniReader = new CSVReader(new FileReader("src\\main\\resources\\comuni-italiani.csv"));
+			System.out.println(comuniReader);
+			String[] comuniLine;
+	        try {
+				while ((comuniLine = comuniReader.readNext()) != null){
+					String[] c = comuniLine[0].split(";");
+				    addComune(c[2], provinciaSvc.findIdByNome(c[3]));
+				} findAll();
+			} catch (CsvValidationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        }
+		 catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 

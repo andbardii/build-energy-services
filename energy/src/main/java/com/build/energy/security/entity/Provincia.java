@@ -24,4 +24,5 @@ public class Provincia {
 	
 	private String nome;
 	private String sigla;
+	private String regione;
 }

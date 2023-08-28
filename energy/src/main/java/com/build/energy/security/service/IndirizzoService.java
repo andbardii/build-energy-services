@@ -20,6 +20,8 @@ public class IndirizzoService {
 
 	@Autowired IndirizzoRepository repo;
 	
+	@Autowired ComuneService comuneSvc;
+	
 	@Autowired @Qualifier("indirizzo") private ObjectProvider<Indirizzo> provider;
 	
 	// SAVE METHODS
@@ -27,14 +29,14 @@ public class IndirizzoService {
 								Integer civico,
 								String localita,
 								Integer cap,
-								Comune comune) {
+								Long idComune) {
 		
 		Indirizzo i = provider.getObject().builder()
 						.via(via)
 						.civico(civico)
 						.localita(localita)
 						.cap(cap)
-						.comune(comune)
+						.comune(comuneSvc.findById(idComune))
 						.build();
 				repo.save(i);
 				System.out.println();

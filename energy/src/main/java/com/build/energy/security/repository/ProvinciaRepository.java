@@ -6,4 +6,5 @@ import com.build.energy.security.entity.Provincia;
 
 public interface ProvinciaRepository  extends JpaRepository<Provincia, Long> {
 
+	public Provincia findByNome(String nome); 
 }
