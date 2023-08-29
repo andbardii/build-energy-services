@@ -23,11 +23,11 @@ public class EnergyRunner implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		//provinciaSvc.caricaProvince();
-		//comuneSvc.caricaComuni();
+		provinciaSvc.caricaProvince();
+		comuneSvc.caricaComuni();
 		
-		//indirizzoSvc.caricaIndirizzi();
-		//clienteSvc.caricaClienti();
+		indirizzoSvc.caricaIndirizzi();
+		clienteSvc.caricaClienti();
 		
 		fatturaSvc.caricaFatture();
 		 

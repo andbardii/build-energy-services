@@ -31,9 +31,6 @@ public class FatturaService {
 	
 	@Autowired @Qualifier("fattura") private ObjectProvider<Fattura> provider;
 
-	
-	//failed to lazily initialize a collection of role
-	@Transactional//Fa rimanere aperto lo stream per accedere a Cliente
 	public Fattura addFattura(Long idCliente,
 							  Integer anno,
 							  LocalDate data,
@@ -43,24 +40,14 @@ public class FatturaService {
 		Cliente c = clienteSvc.findById(idCliente);	
 		
 		Fattura f = provider.getObject().builder()
+				        .idCliente(idCliente)
 						.anno(anno)
 						.data(data)
 						.importo(importo)
-	                    .numero(c.getFatture().size()+ 1)//Incrementa il numero delle fatture del Cliente
+	                    .numero(repo.findByIdCliente(idCliente).size()+1 )//Incrementa il numero delle fatture del Cliente
 						.stato(stato)
 						.build();
 				repo.save(f);
-				
-			
-				Set<Fattura> s = new HashSet<Fattura>();
-				s.addAll(c.getFatture());
-				s.add(f);
-				
-				c.builder()
-				.fatture(s)
-				.build();
-				
-				clienteSvc.toggleFatture(c);
 				
 				System.out.println();
 				log.info("Fattura del cliente" + c.getId() + "aggiunta al Database, Id: " + f.getId());

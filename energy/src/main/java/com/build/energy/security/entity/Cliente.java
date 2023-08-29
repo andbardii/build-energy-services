@@ -69,7 +69,4 @@ public class Cliente {
 	@OneToOne
 	private Indirizzo sedeOperativa;
 
-	@ManyToMany
-	private Set<Fattura> fatture;
-	
 }

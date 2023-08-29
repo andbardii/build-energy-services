@@ -100,9 +100,6 @@ public class ClienteService {
 	               3477428, TipoCliente.SRL, 4l, 4l);
 	}
 
-	public void toggleFatture(Cliente c) {
-		// TODO Auto-generated method stub
-		repo.save(c);
-	}
+	
 
 }

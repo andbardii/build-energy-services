@@ -28,6 +28,8 @@ public class Fattura {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	
+	private Long idCliente;
 	private Integer anno;
 	private LocalDate data;
 	private Double importo;
