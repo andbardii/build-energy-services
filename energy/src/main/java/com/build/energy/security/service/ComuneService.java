@@ -68,7 +68,7 @@ public class ComuneService {
 				while ((comuniLine = comuniReader.readNext()) != null){
 					String[] c = comuniLine[0].split(";");
 				    addComune(c[2], provinciaSvc.findIdByNome(c[3]));
-				} findAll();
+				} //findAll();
 			} catch (CsvValidationException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

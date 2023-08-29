@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import com.build.energy.security.enumerated.TipoCliente;
 import com.build.energy.security.service.ClienteService;
 import com.build.energy.security.service.ComuneService;
 import com.build.energy.security.service.FatturaService;
@@ -22,8 +23,21 @@ public class EnergyRunner implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
-		provinciaSvc.caricaProvince();
-		comuneSvc.caricaComuni();
+		//provinciaSvc.caricaProvince();
+		//comuneSvc.caricaComuni();
+		
+		//indirizzoSvc.caricaIndirizzi();
+		//clienteSvc.caricaClienti();
+		
+		fatturaSvc.caricaFatture();
+		 
+		  
+		  
+		  
+		 
+		
+		
+		
 		
 	}
 	

@@ -57,5 +57,13 @@ public class IndirizzoService {
 		return l;
 	}
 
+	public void caricaIndirizzi() {
+		// TODO Auto-generated method stub
+		addIndirizzo("Via Dante" , 13 , "Fondachello", 43572 , 1l );
+		addIndirizzo("Via Mazzini" , 126 , "Playa", 43452 , 2l );
+		addIndirizzo("Piazza Cavour" , 12 , "Marina", 23972 , 3l );
+		addIndirizzo("Corso Umberto" , 3 , "San Paolo", 42372 , 4l );
+	}
+
 
 }

@@ -1,5 +1,6 @@
 package com.build.energy.security.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -41,6 +42,8 @@ public class ClienteService {
 							  Long idSedeOperativa) {
 		
 			Cliente c = provider.getObject().builder()
+					    .dataInserimento(LocalDate.now())
+					    .dataUltimoContatto(LocalDate.now())
 						.ragioneSociale(ragioneSociale)
 						.partitaIva(partitaIva)
 						.email(email)
@@ -72,6 +75,34 @@ public class ClienteService {
 		List<Cliente> l = (List<Cliente>)repo.findAll();
 		l.forEach(c -> log.info(c.toString()));
 		return l;
+	}
+
+	public void caricaClienti() {
+		// TODO Auto-generated method stub
+		addCliente( "Amazon", "GFSR537882", "v.schembri@gmail.com", 
+	               3000000.00, "v.schembri@gmail.pec", 3452789, 
+	               "a.bardi@gmail.pec","Andrea", "Bardi", 
+	               3477828, TipoCliente.SPA, 1l, 1l);
+		
+		addCliente( "INPS", "DTS5978820", "v.falcone@gmail.com", 
+	               200000.00, "v.falcone@gmail.pec", 2345789, 
+	               "a.brancato@gmail.pec","Marco", "Brancato", 
+	               6472328, TipoCliente.PA, 2l, 2l);
+		
+		addCliente( "CURELLA Servizi", "C0A3478820", "v.curella@gmail.com", 
+	               200000.00, "v.curella@gmail.pec", 2334349, 
+	               "a.licata@gmail.pec","Giuseppe", "Licata", 
+	               8977828, TipoCliente.SAS, 3l,3l);
+		
+		addCliente( "Poste private", "C9P3478820", "v.poste@gmail.com", 
+	               200000.00, "v.poste@gmail.pec", 4535789, 
+	               "a.poste@gmail.pec","Servizi", "Milani", 
+	               3477428, TipoCliente.SRL, 4l, 4l);
+	}
+
+	public void toggleFatture(Cliente c) {
+		// TODO Auto-generated method stub
+		repo.save(c);
 	}
 
 }
