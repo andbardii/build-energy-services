@@ -9,6 +9,7 @@ import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -113,11 +114,6 @@ public class ClienteService {
 		return l;
 	}
 	
-//	public List<Product> getAllProductsSortedByName() {
-//        Sort sortByName = Sort.by(Sort.Direction.ASC, "name");
-//        return productRepository.findAll(sortByName);
-//    }
-	
 	// UPDATE METHODS
 		public void nuovoContatto(LocalDate now , Long clienteId) {
 			Cliente c = repo.findById(clienteId).get();
@@ -131,8 +127,38 @@ public class ClienteService {
 		
 		public Page<Cliente> sortByNome(Pageable pageable) {
 			Sort sortByName = Sort.by(Sort.Direction.ASC, "ragioneSociale");
-			return (Page<Cliente>) page.findAll(sortByName);    
-		    }
+			pageable = PageRequest.of(pageable.getPageNumber(), 3, sortByName);
+
+			return page.findAll(pageable);    
+		}
+		
+		public Page<Cliente> sortByFatturato(Pageable pageable) {
+			Sort sortByFatturato = Sort.by(Sort.Direction.DESC, "fatturatoAnnuale");
+			pageable = PageRequest.of(pageable.getPageNumber(), 3, sortByFatturato);
+
+			return page.findAll(pageable);    
+		}
+		
+		public Page<Cliente> sortByDataInserimento(Pageable pageable) {
+			Sort sortByDataInserimento = Sort.by(Sort.Direction.DESC, "dataInserimento");
+			pageable = PageRequest.of(pageable.getPageNumber(), 3, sortByDataInserimento);
+
+			return page.findAll(pageable);    
+		}
+		
+		public Page<Cliente> sortByDataUltimoContatto(Pageable pageable) {
+			Sort sortByDataUltimoContatto = Sort.by(Sort.Direction.DESC, "dataUltimoContatto");
+			pageable = PageRequest.of(pageable.getPageNumber(), 3, sortByDataUltimoContatto);
+
+			return page.findAll(pageable);    
+		}
+		
+		public Page<Cliente> sortByProvincia(Pageable pageable) {
+			Sort sortByProvincia = Sort.by(Sort.Direction.ASC, "sedeLegale.comune.provincia");
+			pageable = PageRequest.of(pageable.getPageNumber(), 3, sortByProvincia);
+
+			return page.findAll(pageable);    
+		}
 		
 	// OTHER METHODS
 	public void caricaClienti() {

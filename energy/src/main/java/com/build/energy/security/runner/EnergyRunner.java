@@ -52,7 +52,7 @@ public class EnergyRunner implements CommandLineRunner{
 		//fatturaSvc.findByData(LocalDate.of(2023, 8, 18));
 		//fatturaSvc.findByStato(StatoFattura.PAGATA);
 		//fatturaSvc.findByRangeImporti(2000.00, 5000.00);
-		
+
 	}
 	
 

@@ -29,10 +29,39 @@ public class ClientePageController {
 		return resp;
 	}
 	
-	@GetMapping("/sort/nome")
+	@GetMapping("/sort-nome")
 	public ResponseEntity<Page<Cliente>> sortByNome(Pageable p) {
 		Page<Cliente> page = svc.sortByNome(p);
 		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
 		return resp;
 	}
+	
+	@GetMapping("/sort-fatturato")
+	public ResponseEntity<Page<Cliente>> sortByFatturato(Pageable p) {
+		Page<Cliente> page = svc.sortByFatturato(p);
+		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
+		return resp;
+	}
+	
+	@GetMapping("/sort-datainserimento")
+	public ResponseEntity<Page<Cliente>> sortByDataInserimento(Pageable p) {
+		Page<Cliente> page = svc.sortByDataInserimento(p);
+		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
+		return resp;
+	}
+	
+	@GetMapping("/sort-ultimocontatto")
+	public ResponseEntity<Page<Cliente>> sortByDataUltimoContatto(Pageable p) {
+		Page<Cliente> page = svc.sortByDataUltimoContatto(p);
+		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
+		return resp;
+	}
+	
+	@GetMapping("/sort-provincia")
+	public ResponseEntity<Page<Cliente>> sortByProvincia(Pageable p) {
+		Page<Cliente> page = svc.sortByProvincia(p);
+		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
+		return resp;
+	}
+	
 }
