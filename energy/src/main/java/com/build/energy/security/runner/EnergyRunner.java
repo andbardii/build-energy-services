@@ -1,5 +1,8 @@
 package com.build.energy.security.runner;
 
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -35,12 +38,12 @@ public class EnergyRunner implements CommandLineRunner{
 //		fatturaSvc.caricaFatture();
 		
 		Cliente c = repoCliente.findByName("Amazon");
-		 
 		System.out.println(c);  
 		  
 		  
-		 
-		
+	    List<Cliente> l  = repoCliente.findByClienteFatturato(1000);
+	    
+		l.forEach( d-> System.out.println(d));
 		
 		
 		
