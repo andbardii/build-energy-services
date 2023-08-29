@@ -8,11 +8,15 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.build.energy.security.entity.Cliente;
 import com.build.energy.security.entity.Indirizzo;
 import com.build.energy.security.enumerated.TipoCliente;
+import com.build.energy.security.pageable.repository.ClientePageable;
 import com.build.energy.security.repository.ClienteRepository;
 
 @Service
@@ -21,6 +25,7 @@ public class ClienteService {
 	private Logger log = LoggerFactory.getLogger(ClienteService.class);
 	
 	@Autowired ClienteRepository repo;
+	@Autowired ClientePageable page;
 	
 	@Autowired IndirizzoService indirizzoSvc;
 	
@@ -77,8 +82,56 @@ public class ClienteService {
 		return l;
 	}
 
+	public Cliente findByName(String name) {
+		Cliente c = repo.findByName(name);
+		return c;  
+		
+	}
+	
+	public List<Cliente> findClientiByFatturatoMaggiore(int fatturato) {
+		
+		System.out.println();
+		log.info("Clienti con fatturato maggiore di " + fatturato + ":");
+		List<Cliente> l  = repo.findByClienteFatturato(fatturato);
+		l.forEach( c -> log.info(c.toString()));
+		return l;
+	}
+	
+	public List<Cliente> findByDataInserimento(LocalDate DataInserimento){
+		System.out.println();
+		log.info("Clienti inseriti in data " + DataInserimento + ":");
+		List<Cliente> l  = repo.findByDataInserimento(DataInserimento);
+		l.forEach( c -> log.info(c.toString()));
+		return l;
+	}
+	
+	public List<Cliente> findByDataUltimoContatto(LocalDate DataUltimoContatto) {
+		System.out.println();
+		log.info("Clienti contattati l'ultima volta il giorno " + DataUltimoContatto + ":");
+		List<Cliente> l  = repo.findByDataUltimoContatto(DataUltimoContatto);
+		l.forEach( c -> log.info(c.toString()));
+		return l;
+	}
+	
+//	public List<Product> getAllProductsSortedByName() {
+//        Sort sortByName = Sort.by(Sort.Direction.ASC, "name");
+//        return productRepository.findAll(sortByName);
+//    }
+	
+	// UPDATE METHODS
+		public void nuovoContatto(LocalDate now , Long clienteId) {
+			Cliente c = repo.findById(clienteId).get();
+			c.setDataUltimoContatto(now);
+		}
+	
+	// PAGEABLE METHODS
+		public Page<Cliente> getAll(Pageable pageable) {
+	       return page.findAll(pageable);
+	    }
+		
+	// OTHER METHODS
 	public void caricaClienti() {
-		// TODO Auto-generated method stub
+	
 		addCliente( "Amazon", "GFSR537882", "v.schembri@gmail.com", 
 	               3000000.00, "v.schembri@gmail.pec", 3452789, 
 	               "a.bardi@gmail.pec","Andrea", "Bardi", 
@@ -99,13 +152,5 @@ public class ClienteService {
 	               "a.poste@gmail.pec","Servizi", "Milani", 
 	               3477428, TipoCliente.SRL, 4l, 4l);
 	}
-
-	public void nuovoContatto(LocalDate now , Long clienteId) {
-		// TODO Auto-generated method stub
-		Cliente c = repo.findById(clienteId).get();
-		c.setDataUltimoContatto(now);
-	}
-
-	
 
 }

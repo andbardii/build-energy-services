@@ -30,7 +30,8 @@ public class FatturaService {
 	
 	
 	@Autowired @Qualifier("fattura") private ObjectProvider<Fattura> provider;
-
+	
+	// SAVE METHODS
 	public Fattura addFattura(Long idCliente,
 							  Integer anno,
 							  LocalDate data,
@@ -66,7 +67,48 @@ public class FatturaService {
 		l.forEach(f -> log.info(f.toString()));
 		return l;
 	}
+	
+	public List<Fattura> findByCliente(long id) {
+		List<Fattura> l = repo.findByIdCliente(id);
+		System.out.println();
+		log.info("Fatture del Cliente id " + id + ":");
+		l.forEach(c -> log.info(c.toString()));
+		return l;
+	}
 
+	public List<Fattura> findByAnno(int anno) {
+		List<Fattura> l = repo.findByAnno(anno);
+		System.out.println();
+		log.info("Fatture nell'anno " + anno + ":");
+		l.forEach(c -> log.info(c.toString()));
+		return l;
+	}
+
+	public List<Fattura> findByData(LocalDate data) {
+		List<Fattura> l = repo.findByData(data);
+		System.out.println();
+		log.info("Fatture nella data " + data + ":");
+		l.forEach(c -> log.info(c.toString()));
+		return l;
+	}
+
+	public List<Fattura> findByStato(StatoFattura stato) {
+		List<Fattura> l = repo.findByStato(stato);
+		System.out.println();
+		log.info("Fatture con stato " + stato + ":");
+		l.forEach(c -> log.info(c.toString()));
+		return l;
+	}
+
+	public List<Fattura> findByRangeImporti(double min, double max) {
+		List<Fattura> l = repo.findByRangeImporti(min, max);
+		System.out.println();
+		log.info("Fatture con importo compreso tra " + min + " e " + max + ":");
+		l.forEach(c -> log.info(c.toString()));
+		return l;
+	}
+	
+	// OTHER METHODS
 	public void caricaFatture() {
 		// TODO Auto-generated method stub
 		addFattura( 2l,2023, LocalDate.of(2023, 8, 18),
@@ -84,4 +126,5 @@ public class FatturaService {
 		
 	}
 
+	
 }

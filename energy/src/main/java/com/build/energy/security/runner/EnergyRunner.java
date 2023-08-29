@@ -1,6 +1,7 @@
 package com.build.energy.security.runner;
 
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.build.energy.security.entity.Cliente;
+import com.build.energy.security.enumerated.StatoFattura;
 import com.build.energy.security.enumerated.TipoCliente;
 import com.build.energy.security.repository.ClienteRepository;
 import com.build.energy.security.service.ClienteService;
@@ -29,23 +31,27 @@ public class EnergyRunner implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		
+		// CARICA DATI FILE CSV
 //		provinciaSvc.caricaProvince();
 //		comuneSvc.caricaComuni();
-//		
+		
+		// CARICA ALTRI DATI STATICI
 //		indirizzoSvc.caricaIndirizzi();
 //		clienteSvc.caricaClienti();
-//		
 //		fatturaSvc.caricaFatture();
 		
-		Cliente c = repoCliente.findByName("Amazon");
-		System.out.println(c);  
-		  
-		  
-	    List<Cliente> l  = repoCliente.findByClienteFatturato(1000);
-	    
-		l.forEach( d-> System.out.println(d));
+		// METODI CLIENTE
+//		clienteSvc.findByName("Amazon");
+//		clienteSvc.findClientiByFatturatoMaggiore(200000);
+//		clienteSvc.findByDataInserimento(LocalDate.now());
+//		clienteSvc.findByDataUltimoContatto(LocalDate.now());
 		
-		
+		// METODI FATTURE
+//		fatturaSvc.findByCliente(1l);
+//		fatturaSvc.findByAnno(2023);
+//		fatturaSvc.findByData(LocalDate.of(2023, 8, 18));
+//		fatturaSvc.findByStato(StatoFattura.PAGATA);
+//		fatturaSvc.findByRangeImporti(2000.00, 5000.00);
 		
 	}
 	
