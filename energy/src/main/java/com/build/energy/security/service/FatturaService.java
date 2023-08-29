@@ -37,7 +37,7 @@ public class FatturaService {
 							  Double importo,
 							  StatoFattura stato) {
 		
-		Cliente c = clienteSvc.findById(idCliente);	
+		clienteSvc.nuovoContatto(LocalDate.now(), idCliente);
 		
 		Fattura f = provider.getObject().builder()
 				        .idCliente(idCliente)
@@ -50,7 +50,7 @@ public class FatturaService {
 				repo.save(f);
 				
 				System.out.println();
-				log.info("Fattura del cliente" + c.getId() + "aggiunta al Database, Id: " + f.getId());
+				log.info("Fattura del cliente" + f.getIdCliente() + "aggiunta al Database, Id: " + f.getId());
 				return f;
 	}
 	

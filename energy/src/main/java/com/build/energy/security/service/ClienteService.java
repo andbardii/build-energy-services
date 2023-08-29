@@ -100,6 +100,12 @@ public class ClienteService {
 	               3477428, TipoCliente.SRL, 4l, 4l);
 	}
 
+	public void nuovoContatto(LocalDate now , Long clienteId) {
+		// TODO Auto-generated method stub
+		Cliente c = repo.findById(clienteId).get();
+		c.setDataUltimoContatto(now);
+	}
+
 	
 
 }
