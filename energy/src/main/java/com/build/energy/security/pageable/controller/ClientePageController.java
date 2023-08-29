@@ -22,11 +22,17 @@ public class ClientePageController {
 	@Autowired ClienteService svc;
 
 	// GET API METHODS
-	@GetMapping()
+	@GetMapping
 	public ResponseEntity<Page<Cliente>> getAll(Pageable p) {
 		Page<Cliente> page = svc.getAll(p);
 		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
 		return resp;
 	}
 	
+	@GetMapping("/sort/nome")
+	public ResponseEntity<Page<Cliente>> sortByNome(Pageable p) {
+		Page<Cliente> page = svc.sortByNome(p);
+		ResponseEntity<Page<Cliente>> resp = new ResponseEntity<Page<Cliente>>(page, HttpStatus.OK);
+		return resp;
+	}
 }

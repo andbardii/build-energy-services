@@ -32,26 +32,26 @@ public class EnergyRunner implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		// CARICA DATI FILE CSV
-//		provinciaSvc.caricaProvince();
-//		comuneSvc.caricaComuni();
+		//provinciaSvc.caricaProvince();
+		//comuneSvc.caricaComuni();
 		
 		// CARICA ALTRI DATI STATICI
-//		indirizzoSvc.caricaIndirizzi();
-//		clienteSvc.caricaClienti();
-//		fatturaSvc.caricaFatture();
+		//indirizzoSvc.caricaIndirizzi();
+		//clienteSvc.caricaClienti();
+		//fatturaSvc.caricaFatture();
 		
 		// METODI CLIENTE
-//		clienteSvc.findByName("Amazon");
-//		clienteSvc.findClientiByFatturatoMaggiore(200000);
-//		clienteSvc.findByDataInserimento(LocalDate.now());
-//		clienteSvc.findByDataUltimoContatto(LocalDate.now());
+		//clienteSvc.findByName("Amazon");
+		//clienteSvc.findClientiByFatturatoMaggiore(200000);
+		//clienteSvc.findByDataInserimento(LocalDate.now());
+		//clienteSvc.findByDataUltimoContatto(LocalDate.now());
 		
 		// METODI FATTURE
-//		fatturaSvc.findByCliente(1l);
-//		fatturaSvc.findByAnno(2023);
-//		fatturaSvc.findByData(LocalDate.of(2023, 8, 18));
-//		fatturaSvc.findByStato(StatoFattura.PAGATA);
-//		fatturaSvc.findByRangeImporti(2000.00, 5000.00);
+		//fatturaSvc.findByCliente(1l);
+		//fatturaSvc.findByAnno(2023);
+		//fatturaSvc.findByData(LocalDate.of(2023, 8, 18));
+		//fatturaSvc.findByStato(StatoFattura.PAGATA);
+		//fatturaSvc.findByRangeImporti(2000.00, 5000.00);
 		
 	}
 	

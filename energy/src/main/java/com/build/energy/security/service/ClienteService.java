@@ -129,6 +129,11 @@ public class ClienteService {
 	       return page.findAll(pageable);
 	    }
 		
+		public Page<Cliente> sortByNome(Pageable pageable) {
+			Sort sortByName = Sort.by(Sort.Direction.ASC, "ragioneSociale");
+			return (Page<Cliente>) page.findAll(sortByName);    
+		    }
+		
 	// OTHER METHODS
 	public void caricaClienti() {
 	
