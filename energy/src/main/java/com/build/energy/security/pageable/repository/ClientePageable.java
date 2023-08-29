@@ -4,6 +4,6 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 
 import com.build.energy.security.entity.Cliente;
 
-public interface ClientePageable extends PagingAndSortingRepository<Cliente, Long>{
+public interface ClientePageable extends PagingAndSortingRepository<Cliente, Long> {
 	
 }

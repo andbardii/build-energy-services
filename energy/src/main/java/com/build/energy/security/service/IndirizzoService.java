@@ -7,10 +7,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.build.energy.security.entity.Comune;
 import com.build.energy.security.entity.Indirizzo;
+import com.build.energy.security.pageable.repository.IndirizzoPageable;
 import com.build.energy.security.repository.IndirizzoRepository;
 
 @Service
@@ -19,6 +21,7 @@ public class IndirizzoService {
 	private Logger log = LoggerFactory.getLogger(ClienteService.class);
 
 	@Autowired IndirizzoRepository repo;
+	@Autowired IndirizzoPageable page;
 	
 	@Autowired ComuneService comuneSvc;
 	
@@ -56,7 +59,13 @@ public class IndirizzoService {
 		l.forEach(i -> log.info(i.toString()));
 		return l;
 	}
-
+	
+	// PAGEABLE METHODS
+	public Page<Indirizzo> getAll(Pageable pageable) {
+		return page.findAll(pageable);
+	}
+		
+	// OTHER METHODS
 	public void caricaIndirizzi() {
 		// TODO Auto-generated method stub
 		addIndirizzo("Via Dante" , 13 , "Fondachello", 43572 , 1l );

@@ -10,10 +10,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.build.energy.security.entity.Comune;
 import com.build.energy.security.entity.Provincia;
+import com.build.energy.security.pageable.repository.ProvinciaPageable;
 import com.build.energy.security.repository.ProvinciaRepository;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvValidationException;
@@ -24,6 +26,8 @@ public class ProvinciaService {
 	private Logger log = LoggerFactory.getLogger(ClienteService.class);
 	
 	@Autowired ProvinciaRepository repo;
+	@Autowired ProvinciaPageable page;
+
 	
 	@Autowired @Qualifier("provincia") private ObjectProvider<Provincia> provider;
 	
@@ -56,6 +60,11 @@ public class ProvinciaService {
 		return l;
 	}
 	
+	// PAGEABLE METHODS
+	public Page<Provincia> getAll(Pageable pageable) {
+		return page.findAll(pageable);
+	}
+		
 	// OTHER METHODS
 	
 		public void caricaProvince() {

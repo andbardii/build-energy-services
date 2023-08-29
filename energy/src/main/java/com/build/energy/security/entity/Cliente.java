@@ -1,7 +1,6 @@
 package com.build.energy.security.entity;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 import com.build.energy.security.enumerated.TipoCliente;
 
@@ -12,7 +11,6 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;

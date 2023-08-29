@@ -2,13 +2,11 @@ package com.build.energy.security.runner;
 
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import com.build.energy.security.entity.Cliente;
 import com.build.energy.security.enumerated.StatoFattura;
 import com.build.energy.security.enumerated.TipoCliente;
 import com.build.energy.security.repository.ClienteRepository;

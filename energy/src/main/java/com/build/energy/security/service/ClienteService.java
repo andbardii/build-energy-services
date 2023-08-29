@@ -15,7 +15,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.build.energy.security.entity.Cliente;
-import com.build.energy.security.entity.Indirizzo;
 import com.build.energy.security.enumerated.TipoCliente;
 import com.build.energy.security.pageable.repository.ClientePageable;
 import com.build.energy.security.repository.ClienteRepository;
