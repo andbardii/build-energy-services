@@ -34,9 +34,9 @@ public class EnergyRunner implements CommandLineRunner{
 		//comuneSvc.caricaComuni();
 		
 		// CARICA ALTRI DATI STATICI
-		//indirizzoSvc.caricaIndirizzi();
-		//clienteSvc.caricaClienti();
-		//fatturaSvc.caricaFatture();
+//		indirizzoSvc.caricaIndirizzi();
+//		clienteSvc.caricaClienti();
+//		fatturaSvc.caricaFatture();
 		
 		// METODI CLIENTE
 		//clienteSvc.findByName("Amazon");

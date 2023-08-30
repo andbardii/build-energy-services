@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "6dbcbf51-b865-47d6-8941-972676be682d",
+		"name": "EnergyServices",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28878852"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"name\": \"Andrea\",\r\n        \"username\": \"andbardii\",\r\n        \"email\": \"andbardii@example.com\",\r\n        \"password\": \"qwerty\",\r\n        \"roles\": [\"USER\", \"MODERATOR\", \"ADMIN\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"username\": \"andbardii\",\r\n        \"password\": \"qwerty\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetAll",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhbmRiYXJkaWlAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTM0MDMyNjEsImV4cCI6MTY5NDI2NzI2MX0.RPSRWi7xQp4n6dI-WJZnQkhFYtdLkMdYesDi2eiiHaltvQ04Cm2_TArkBmqYG0bh",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clienti",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clienti"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetById",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhbmRiYXJkaWlAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTM0MDMyNjEsImV4cCI6MTY5NDI2NzI2MX0.RPSRWi7xQp4n6dI-WJZnQkhFYtdLkMdYesDi2eiiHaltvQ04Cm2_TArkBmqYG0bh",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clienti/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clienti",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addFattura",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhbmRiYXJkaWlAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTM0MDM5MzAsImV4cCI6MTY5NDI2NzkzMH0.K4CIh-W9JlZ_STMbQNPS03JXlQBENn4tgDFRZmfmIkSaSYarAHlCh9dVeBfxbhCT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCliente\": 3,\r\n    \"anno\": 2023,\r\n    \"data\": \"2023-08-30\",\r\n    \"importo\": 5000.00,\r\n    \"stato\": \"PAGATA\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/fatture",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"fatture"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pageable",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhbmRiYXJkaWlAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTM0MDM5MzAsImV4cCI6MTY5NDI2NzkzMH0.K4CIh-W9JlZ_STMbQNPS03JXlQBENn4tgDFRZmfmIkSaSYarAHlCh9dVeBfxbhCT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/clienti/pageable/sort-nome?page=1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"clienti",
+						"pageable",
+						"sort-nome"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filtro",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJhbmRiYXJkaWlAZXhhbXBsZS5jb20iLCJpYXQiOjE2OTM0MDM5MzAsImV4cCI6MTY5NDI2NzkzMH0.K4CIh-W9JlZ_STMbQNPS03JXlQBENn4tgDFRZmfmIkSaSYarAHlCh9dVeBfxbhCT",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/fatture/findbycliente/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"fatture",
+						"findbycliente",
+						"3"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
