@@ -30,8 +30,8 @@ public class EnergyRunner implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		
 		// CARICA DATI FILE CSV
-		//provinciaSvc.caricaProvince();
-		//comuneSvc.caricaComuni();
+//		provinciaSvc.caricaProvince();
+//		comuneSvc.caricaComuni();
 		
 		// CARICA ALTRI DATI STATICI
 //		indirizzoSvc.caricaIndirizzi();
@@ -39,10 +39,10 @@ public class EnergyRunner implements CommandLineRunner{
 //		fatturaSvc.caricaFatture();
 		
 		// METODI CLIENTE
-		//clienteSvc.findByName("Amazon");
-		//clienteSvc.findClientiByFatturatoMaggiore(200000);
-		//clienteSvc.findByDataInserimento(LocalDate.now());
-		//clienteSvc.findByDataUltimoContatto(LocalDate.now());
+//		clienteSvc.findByName("Amazon");
+//		clienteSvc.findClientiByFatturatoMaggiore(200000);
+//		clienteSvc.findByDataInserimento(LocalDate.now());
+//		clienteSvc.findByDataUltimoContatto(LocalDate.now());
 		
 		// METODI FATTURE
 		//fatturaSvc.findByCliente(1l);

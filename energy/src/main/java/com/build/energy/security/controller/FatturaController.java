@@ -34,7 +34,7 @@ public class FatturaController {
 		}
 			
 		@GetMapping("/{id}")
-		//@PreAuthorize("isAuthenticated()")
+		@PreAuthorize("isAuthenticated()")
 		public ResponseEntity<?> findById(@PathVariable Long id) {
 			Fattura f = svc.findById(id);
 			ResponseEntity<Fattura> resp = new ResponseEntity<Fattura>(f, HttpStatus.OK);
