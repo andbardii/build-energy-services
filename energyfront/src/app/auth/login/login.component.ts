@@ -14,18 +14,18 @@ export class LoginComponent {
   error: undefined | string;
 
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private svc: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onSubmit() {
     if( this.form.value.username.trim() !== '' && this.form.value.password.trim() !== '') {
-        this.authService.signin(this.form.value).subscribe(
+        this.svc.signin(this.form.value).subscribe(
           resp => {
             console.log(resp);
             this.error = undefined;
-            this.authService.loggedIn = true;
+            this.svc.loggedIn = true;
             localStorage.setItem('userLogin', JSON.stringify(resp));
             this.router.navigate(['/users'])
           }, err => {
