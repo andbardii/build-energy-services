@@ -2,6 +2,7 @@ package com.build.energy.security.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,7 +15,7 @@ import com.build.energy.security.payload.RegisterDto;
 import com.build.energy.security.service.AuthService;
 
 
-
+@CrossOrigin(origins="*")
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

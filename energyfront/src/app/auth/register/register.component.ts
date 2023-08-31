@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
           resp => {
             console.log(resp);
             this.error = undefined;
-            this.router.navigate(['/login'])
+            this.router.navigate(['login'])
           }, err => {
             console.log(err.error.message);
             this.error = err.error.message;

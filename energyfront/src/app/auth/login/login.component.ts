@@ -26,8 +26,8 @@ export class LoginComponent {
             console.log(resp);
             this.error = undefined;
             this.svc.loggedIn = true;
-            localStorage.setItem('userLogin', JSON.stringify(resp));
-            this.router.navigate(['/users'])
+            localStorage.setItem('user', JSON.stringify(resp));
+            this.router.navigate([''])
           }, err => {
             console.log(err.error.message);
             this.error = err.error.message;
