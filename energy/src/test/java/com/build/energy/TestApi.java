@@ -66,12 +66,12 @@ class TestApi {
 	
 
 	@Test
-	@Order(1)
+	@BeforeEach
 	void testLogin() {
 		LoginDto login = new LoginDto();
 		String baseUrl = "http://localhost:8080/api/auth";
-		login.setUsername("utenteprova");
-		login.setPassword("prova1");
+		login.setUsername("@mariorossi");
+		login.setPassword("qwerty");
 		
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setContentType(MediaType.APPLICATION_JSON);
@@ -91,7 +91,6 @@ class TestApi {
 
 	
 	@Test
-	@Order(2)
 	void testGetById() {
 		Fattura f = fatturaProvider.getObject();
 		f.setIdCliente(1l);

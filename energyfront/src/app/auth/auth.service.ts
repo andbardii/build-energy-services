@@ -23,4 +23,11 @@ export class AuthService {
     return this.http.post('http://localhost:8080/api/auth/register', user);
   }
 
+  isLogged() {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(this.loggedIn)
+      }, 1000)
+    })
+  }
 }
