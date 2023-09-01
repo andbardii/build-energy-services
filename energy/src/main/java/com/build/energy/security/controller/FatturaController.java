@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +20,7 @@ import com.build.energy.security.enumerated.StatoFattura;
 import com.build.energy.security.service.FatturaService;
 
 @RestController
+@CrossOrigin(origins = "*", maxAge= 3600)
 @RequestMapping("/api/fatture")
 public class FatturaController {
 
@@ -41,8 +43,8 @@ public class FatturaController {
 			return resp;
 		}
 		
-		@PostMapping
-	    @PreAuthorize("hasRole('MODERATOR') or hasRole('ADMIN')")
+		@PostMapping("/post")
+	    @PreAuthorize("isAuthenticated()")
 	    public ResponseEntity<?> addFattura(@RequestBody Fattura fattura) {
 	        Fattura f = svc.addFattura(fattura.getIdCliente(), 
 	        		                   fattura.getAnno(),

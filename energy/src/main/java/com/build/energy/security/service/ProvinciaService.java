@@ -54,6 +54,11 @@ public class ProvinciaService {
 		return p;
 	}
 	
+	public List<Provincia> findByNomeAPI(String nome) {
+		List<Provincia> p = repo.findByNome(nome);
+		return p;
+	}
+	
 	public List<Provincia> findAll(){
 		List<Provincia> l = (List<Provincia>)repo.findAll();
 		l.forEach(p -> log.info(p.toString()));
@@ -93,7 +98,7 @@ public class ProvinciaService {
 		}
 		
 		public Long findIdByNome(String nome) {
-			Provincia p = repo.findByNome(nome);
+			Provincia p = repo.findByNome(nome).get(0);
 			if (p == null) {
 				return null;
 			}else {

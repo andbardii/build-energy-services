@@ -1,11 +1,23 @@
 <div class="container-fluid">
   <div class="row">
+    <div class="col-12">
+      <svg [routerLink]="['/home']" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#000000" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+      </svg>
+    </div>
+    <div class="col-12 text-center"><h3>GESTIONE CLIENTI</h3></div>
     <div class="col-4 p-3" *ngFor="let cliente of clienti">
-      <div class="card" style="width: 18rem">
+      <div class="card" [routerLink]="['/cliente/' + cliente.id]">
         <div class="card-body">
-          <h5 class="card-title">{{ cliente.ragioneSociale }}</h5>
+          <h5 class="card-title">{{ cliente.id }} - {{ cliente.ragioneSociale }}</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">
             {{ cliente.partitaIva }}
+          </h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            Fatturato annuale: <b>{{ cliente.fatturatoAnnuale }}$</b>
+          </h6>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            Sede legale: {{ cliente.sedeLegale?.civico }} {{ cliente.sedeLegale?.via }}, {{ cliente.sedeLegale?.comune?.nome }}, {{ cliente.sedeLegale?.comune?.provincia?.sigla }}
           </h6>
         </div>
       </div>

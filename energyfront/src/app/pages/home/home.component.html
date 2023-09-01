@@ -1,6 +1,25 @@
-<nav class="navbar navbar-expand navbar-light bg-light">
-  <div class="nav navbar-nav">
-    <a class="nav-item nav-link active" href="#" aria-current="page">Home</a>
-    <a class="nav-item nav-link" href="#">Home</a>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 p-3">
+      <div class="card" [routerLink]="['/clienti']">
+        <div class="card-body">
+          <h5 class="card-title mb-0">CLIENTI</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 p-3">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title mb-0">FATTURE</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 p-3">
+      <div class="card" [routerLink]="['/province']">
+        <div class="card-body">
+          <h5 class="card-title mb-0">PROVINCE</h5>
+        </div>
+      </div>
+    </div>
   </div>
-</nav>
+</div>

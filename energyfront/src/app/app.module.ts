@@ -8,9 +8,10 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './pages/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './auth/register/register.component';
 import { ClientiComponent } from './pages/clienti/clienti.component';
+import { ClienteComponent } from './pages/clienti/cliente/cliente.component';
+import { ProvinceComponent } from './pages/province/province.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,8 @@ import { ClientiComponent } from './pages/clienti/clienti.component';
     HomeComponent,
     RegisterComponent,
     ClientiComponent,
+    ClienteComponent,
+    ProvinceComponent
   ],
   imports: [
     BrowserModule,

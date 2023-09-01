@@ -1,14 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { Cliente } from '../interfaces/cliente';
-import { Fattura } from '../interfaces/fattura';
+import { Injectable } from '@angular/core';
+import { Provincia } from '../interfaces/provincia';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class ClienteServiceService {
+export class ProvinceService {
 
-  constructor(private http: HttpClient) {}
+  constructor(private http:HttpClient) { }
 
   headers = new HttpHeaders();
 
@@ -27,19 +26,21 @@ export class ClienteServiceService {
       'Authorization',
       'Bearer ' + this.getToken()
     );
-    return this.http.get<Cliente[]>('http://localhost:8080/api/clienti/set', {
+    return this.http.get<Provincia[]>('http://localhost:8080/api/province/set', {
       headers: this.headers
     });
   }
 
-  getById(id:number) {
+  searchProvince(nome:string) {
     this.headers = this.headers.set(
       'Authorization',
       'Bearer ' + this.getToken()
     );
-    return this.http.get<Cliente>('http://localhost:8080/api/clienti/'+ id, {
+    console.log(Object.values(nome))
+    return this.http.get<Provincia[]>('http://localhost:8080/api/province/search/' + Object.values(nome) , {
       headers: this.headers
-    });
-  }
 
+    });
+
+  }
 }
