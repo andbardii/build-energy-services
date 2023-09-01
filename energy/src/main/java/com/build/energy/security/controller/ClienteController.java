@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,16 +18,19 @@ import org.springframework.web.bind.annotation.RestController;
 import com.build.energy.security.entity.Cliente;
 import com.build.energy.security.service.ClienteService;
 
+
 @RestController
 @RequestMapping("/api/clienti")
+@CrossOrigin(origins = "*", maxAge= 3600)
 public class ClienteController {
 	
 	@Autowired ClienteService svc;
 
 		// GET API METHODS
-		@GetMapping
+		@GetMapping("/set")
 		@PreAuthorize("isAuthenticated()")
 		public ResponseEntity<List<Cliente>> findAll() {
+			System.out.println("ciao");
 			List<Cliente> list = svc.findAll();
 			ResponseEntity<List<Cliente>> resp = new ResponseEntity<List<Cliente>>(list, HttpStatus.OK);
 			return resp;

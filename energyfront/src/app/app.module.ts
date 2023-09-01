@@ -10,24 +10,24 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RegisterComponent } from './auth/register/register.component';
+import { ClientiComponent } from './pages/clienti/clienti.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    ClientiComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule ,
+    NgbModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule,
-    CommonModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
