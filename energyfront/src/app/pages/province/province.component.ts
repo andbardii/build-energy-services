@@ -29,6 +29,7 @@ onSearch() {
     this.svc.searchProvince(this.form.value).subscribe(province =>{
       this.province = province;
       console.log(this.province)
+      this.form.reset();
     })
 }
 }
