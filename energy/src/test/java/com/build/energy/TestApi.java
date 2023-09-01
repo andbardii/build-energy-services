@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -42,26 +43,27 @@ class TestApi {
 	public String accessToken = "";
 	
 	
-//	@Test
-//	void testRegister() {
-//		RegisterDto register = new RegisterDto();
-//		String baseUrl = "http://localhost:8080/api/auth";
-//		register.setName("utente");
-//		register.setLastname("prova");
-//		register.setEmail("utente@prova.com");
-//		register.setPassword("prova1");
-//		register.setUsername("utenteprova");
-//		
-//	    
-//	   // HttpEntity<RegisterDto> requestEntity = new HttpEntity<>(register);
-//	    
-//	    
-//	    // Effettua la chiamata POST
-//        ResponseEntity<String> response = restTemplate.postForEntity(baseUrl + "/register", register , String.class);
-//	    System.out.println(response);
-//	    
-//	    assertEquals(HttpStatus.CREATED, response.getStatusCode());
-//	}
+	@Test
+	@BeforeAll
+	void testRegister() {
+		RegisterDto register = new RegisterDto();
+		String baseUrl = "http://localhost:8080/api/auth";
+		register.setName("utente");
+		register.setLastname("prova");
+		register.setEmail("utente@prova.com");
+		register.setPassword("prova1");
+		register.setUsername("utenteprova");
+		
+	    
+	    HttpEntity<RegisterDto> requestEntity = new HttpEntity<>(register);
+	    
+	    
+	    // Effettua la chiamata POST
+        ResponseEntity<String> response = restTemplate.postForEntity(baseUrl + "/register", register , String.class);
+	    System.out.println(response);
+	    
+	    assertEquals(HttpStatus.CREATED, response.getStatusCode());
+	}
 	
 	
 
